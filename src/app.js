@@ -15,6 +15,10 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get('/', (req, res) => {
+  // Lógica para renderizar o conteúdo principal da página inicial
+  res.send('Bem-vindo à página inicial');
+});
 // Listar todos os usuários
 app.get('/pessoa', async (req, res) => {
     const pessoa = await Pessoa.findAll();
