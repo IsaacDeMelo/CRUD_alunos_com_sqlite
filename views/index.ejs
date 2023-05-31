@@ -16,8 +16,10 @@
             text-decoration: none;
         }
         td{
-            border: 1px solid black;
+            border-bottom: 1px solid black;
+            border-top: 1px solid black;
             font-family: Helvetica; 
+            font-weight: bold;
         }
         th{
             font-weight: bold;
@@ -31,7 +33,7 @@
             margin-top: 150px;
             background-color: rgb(49, 49, 49);
             border: 1px solid black;
-            border-radius: 10px; 
+            border-radius: 20px;
         }
         .button{
             width: 300px;
@@ -50,6 +52,7 @@
         }
 </style>
 <body>
+<div class="contain">
   <table>
     <tr>
         <th>ID</th>
@@ -72,6 +75,7 @@
     </tr>
     <% } %>
 </table>
+</div>
 <a href="/pessoa/create"><button id="create" class="btn btn-primary">Create</button></a> 
 <br>
 </body>
