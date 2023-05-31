@@ -1,6 +1,9 @@
-exports.handler = async function (event, context) {
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ message: "Hello World" }),
-    };
-  };
+import { app } from 'express';
+import app from '../src/app.js'
+
+const port = process.env.PORT || 3000;
+
+
+app.listen(port, () => {
+  console.log(`Servidor escutando em http://localhost:${port}`)
+})
