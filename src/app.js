@@ -1,7 +1,9 @@
 import express from "express";
 import database from './db.js';
 import Pessoa from './aluno.js';
+import Sequelize from 'sequelize';
 
+const {Op} = Sequelize;
 const app = express();
 app.set('view engine', 'ejs');
 app.set('views', './views');
@@ -57,5 +59,10 @@ app.get('/pessoa', async (req, res) => {
     const { id } = req.params;
     await Pessoa.destroy({ where: { id } });
     res.redirect('/pessoa');
+  });
+  app.post('/pessoa/seach', async (req, res) => {
+    const { name } = req.body;
+    const pessoa = await Pessoa.findAll({ where: {name: { [Op.like]:`%${name}%`}}})
+    res.render('index', { pessoa })
   });
 export default app; 

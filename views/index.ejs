@@ -8,6 +8,8 @@
         body{ 
             display: flex; 
             justify-content: center;
+            flex-direction: column;
+            align-items: center;
             color: white; 
             background-color: rgb(24, 24, 24);
         }
@@ -39,6 +41,10 @@
             width: 300px;
             height: 30px;
         }
+        #button2{
+            position: fixed; 
+            right: 10px;
+        }
         #modify{
             margin-right: 10px;
         }
@@ -50,6 +56,14 @@
             right: 20px;
             top: 20px; 
         }
+        form{
+            position: fixed; 
+            bottom: 10px;
+            left: 10px; 
+        }
+        .style2{
+            display: flex; 
+        }
 </style>
 <body>
 <div class="contain">
@@ -58,8 +72,8 @@
         <th>ID</th>
         <th>Name</th>
         <th>Email</th>
-        <th>Matricula</th>
-        <th>Data Nascimento</th>
+        <th>Resistration</th>
+        <th>Date of Birth</th>
         <th>Status</th>
         <th></th>
     </tr>
@@ -71,12 +85,28 @@
         <td><%= elemento.matricula %></td>
         <td><%= elemento.data %></td>
         <td><%= elemento.status %></td>
-        <td class="button"><a class="modify" href="/pessoa/<%=elemento.id%>/edit"><button id="modify" class="btn btn-primary">Modify</button></a><a class="modify" href="/pessoa/<%=elemento.id%>/delete"><button id="delete" class="btn btn-primary">Delete</button></a></td>
+        <td class="button"><a class="modify" href="/pessoa/<%=elemento.id%>/edit"><button id="modify" class="btn btn-outline-success">Modify</button></a><a class="modify" href="/pessoa/<%=elemento.id%>/delete"><button id="delete" class="btn btn-danger">Delete</button></a></td>
     </tr>
     <% } %>
 </table>
+<br>
+<br>
+<br>
+<br>
+<br>
 </div>
-<a href="/pessoa/create"><button id="create" class="btn btn-primary">Create</button></a> 
+<form action="/pessoa/seach" method="post">
+    <label for="exampleInputEmail1">Seach By Name</label>
+    <div class="style2">
+    <div class="form-group">
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" placeholder="Name" value="<%=pessoa.name%>">
+      <small id="emailHelp" class="form-text text-muted"></small>
+    </div>
+    <button type="submit" class="btn btn-success" id="button1">Submit</button>
+    <a href="/pessoa"><index type="button" class="btn btn-success" id="button2">Search Reset</index></a>
+  </div>
+  </form>
+<a href="/pessoa/create"><button id="create" class="btn btn-success">Create</button></a> 
 <br>
 </body>
 </html>
